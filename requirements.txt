@@ -1,0 +1,11 @@
+fastapi==0.111.0
+pydantic
+pydantic-settings
+uvicorn
+sqlalchemy~=2.0.29
+fastui
+fastapi-cache
+alembic
+asyncpg
+fastapi-users[sqlalchemy]
+python-dotenv~=1.0.1
