@@ -48,9 +48,9 @@ metadata = MetaData()
 
 
 class Form(Base):
-
     __tablename__ = "form"
     metadata = metadata
+
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True
     )
