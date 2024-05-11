@@ -1,4 +1,4 @@
-from typing import List, Union, Dict
+from typing import List, Dict
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import Integer, String, MetaData, ForeignKey, JSON
 from sqlalchemy.orm import mapped_column, Mapped
@@ -38,7 +38,7 @@ class FormCreateModel(BaseModel):
                     "q_type": "sample_type",
                     "q_text": "sample qtext",
                     "choices": ["sometext", "sometext1"]
-                        }
+                }
             }
         }
     )
@@ -60,6 +60,8 @@ class Form(Base):
     form_name: Mapped[str] = mapped_column(
         String, nullable=False
     )
-    questions = mapped_column(JSON, nullable=False)
+    questions = mapped_column(
+        JSON, nullable=False
+    )
 
     user_relationship = relationship("User")
