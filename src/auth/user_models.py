@@ -1,12 +1,13 @@
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import Integer, String, Boolean, MetaData
-from sqlalchemy.orm import mapped_column, Mapped
+from sqlalchemy.orm import mapped_column, Mapped, relationship
 from src.db import Base
 
 metadata = MetaData()
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
+
     __tablename__ = "user"
     metadata = metadata
     id: Mapped[int] = mapped_column(

@@ -4,7 +4,11 @@ from fastapi_users import FastAPIUsers
 from src.auth.manager import get_user_manager
 from src.auth.user_models import User
 
-cookie_transport = CookieTransport(cookie_max_age=3600)
+cookie_transport = CookieTransport(
+    cookie_max_age=3600,
+    cookie_name="auth_token",
+    cookie_secure=False
+)
 
 SECRET = "SECRET"
 
