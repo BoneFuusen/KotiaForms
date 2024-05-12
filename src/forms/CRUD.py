@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, AsyncSession
 from sqlalchemy import select
 
 
-class CRUD:
+class CRUD_forms:
     async def get_all(self, async_session: async_sessionmaker[AsyncSession]):
         async with async_session() as session:
             statement = select(Form).order_by(Form.id)
@@ -28,6 +28,14 @@ class CRUD:
             result = await session.execute(statement)
 
             return result.scalars().one()
+
+    async def get_all_forms_by_userid(self, async_session: async_sessionmaker[AsyncSession], user_id):
+        async with async_session() as session:
+            statement = select(Form).filter(Form.user_id == user_id)
+
+            result = await session.execute(statement)
+
+            return result.scalars()
 
     async def update(self, async_session: async_sessionmaker[AsyncSession], form_id, data, user_id):
         async with async_session() as session:

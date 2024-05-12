@@ -23,6 +23,8 @@ class ResponseModel(BaseModel):
 
 
 class ResponseCreateModel(BaseModel):
+    choices: Dict[int, int | List[int] | str]
+
     model_config = ConfigDict(
         from_attributes=True,
         json_schema_extra={

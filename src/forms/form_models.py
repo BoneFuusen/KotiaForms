@@ -37,7 +37,7 @@ class FormCreateModel(BaseModel):
                 "qnum": {
                     "q_type": "sample_type",
                     "q_text": "sample qtext",
-                    "choices": ["sometext", "sometext1"]
+                    "choices": ["sometext", "sometext1"]  # leave empty if q_type is "tfq"
                 }
             }
         }
