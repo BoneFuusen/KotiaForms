@@ -3,7 +3,6 @@ pydantic
 pydantic-settings
 uvicorn
 sqlalchemy~=2.0.29
-fastui
 fastapi-cache
 alembic
 asyncpg
