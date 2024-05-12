@@ -13,11 +13,17 @@ types_matching = {"scq": "int", "mcq": "List[int]", "tfq": "str"}
 
 
 class CRUD_resp:
-    async def add(self, async_session: async_sessionmaker[AsyncSession], response: Response):
+    async def add(self, async_session: async_sessionmaker[AsyncSession], response: Response, user_id):
         async with async_session() as session:
             statement = select(Form).filter(Form.id == response.form_id)
+            statement1 = select(Response).filter(Response.form_id == response.form_id, Response.user_id == user_id)
 
+            check = await session.execute(statement1)
             result = await session.execute(statement)
+
+            if check.first() is not None:
+                raise HTTPException(status_code=422, detail="You already sent a response to this form,"
+                                                            " use 'Update' instead.")
             form = result.scalars().one()
 
             for num, question in form.questions.items():
