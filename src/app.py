@@ -110,7 +110,7 @@ async def create_response(response_data: ResponseCreateModel, form_id, user: Use
         choices=response_json["choices"]
     )
 
-    form = await db_resp.add(async_session, new_response. user.id)
+    form = await db_resp.add(async_session, new_response, user.id)
 
     return form
 
